@@ -28,6 +28,22 @@ class TestController extends Controller
 
     public function getChartData($response)
     {
-        # code...
+        $data = json_decode($response,true);
+        $labels = array_keys($data['near_earth_objects']);
+        $datasets = [];
+        foreach($data['near_earth_objects'] as $key => $value){
+            $datasets[] = [
+                ''
+            ];
+        }
+        $planetChartData = [
+            'type' => 'line',
+            'data' => [
+                'labels' => $labels,
+                'datasets' => [
+                    
+                ]
+            ]
+        ]
     }
 }
