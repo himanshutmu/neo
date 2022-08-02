@@ -28,9 +28,8 @@ __webpack_require__.r(__webpack_exports__);
       endDate: ''
     };
   },
-  mounted: function mounted() {
-    var ctx = document.getElementById('planet-chart');
-    new (chart_js__WEBPACK_IMPORTED_MODULE_0___default())(ctx, this.planetChartData);
+  mounted: function mounted() {// const ctx = document.getElementById('planet-chart');
+    // new Chart(ctx, this.planetChartData);
   },
   methods: {
     getData: function getData() {
@@ -45,7 +44,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/getNeoFeed', {
         params: data
       }).then(function (res) {
-        _this.planetChartData = res.data.near_earth_objects;
+        _this.planetChartData = res.data;
+        var ctx = document.getElementById('planet-chart');
+        new (chart_js__WEBPACK_IMPORTED_MODULE_0___default())(ctx, _this.planetChartData);
       });
     }
   }

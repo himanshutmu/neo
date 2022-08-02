@@ -30,8 +30,8 @@ export default {
     }
   },
   mounted() {
-    const ctx = document.getElementById('planet-chart');
-    new Chart(ctx, this.planetChartData);
+    // const ctx = document.getElementById('planet-chart');
+    // new Chart(ctx, this.planetChartData);
   },
   methods:{
     getData(){
@@ -42,7 +42,9 @@ export default {
             api_key: 'DEMO_KEY'
         }
         axios.get('/api/getNeoFeed',{params: data}).then(res => {
-            this.planetChartData = res.data.near_earth_objects;
+            this.planetChartData = res.data;
+            const ctx = document.getElementById('planet-chart');
+            new Chart(ctx, this.planetChartData);
         });
     }
   }
